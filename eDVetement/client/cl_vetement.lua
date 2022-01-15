@@ -218,7 +218,7 @@ end
                 onSelected = function()
                 ESX.TriggerServerCallback('</eDen:GetPrice', function(priceee)
                     if priceee then 
-                        TriggerServerEvent("Vetement:SaveSkin")
+                        TriggerServerEvent("Vetement:Buy")
                         Wait(180)
                         local nom = gettxt2("Choisir un nom pour la tenue ", "", 15)
                         TriggerEvent('skinchanger:getSkin', function(skin)
