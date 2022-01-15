@@ -2,6 +2,15 @@ ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
+ESX.RegisterServerCallback('</eDen:GetPrice', function(source, cb, Price)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    if xPlayer.getMoney() >= Price then
+        cb(true)
+    else
+        cb(false)
+    end
+end)
+
 RegisterNetEvent("Vetement:Buy")
 AddEventHandler("Vetement:Buy", function()
     local xPlayer = ESX.GetPlayerFromId(source)
