@@ -203,7 +203,7 @@ end
           
         RageUI.Button("Non" , nil, { Color = { BackgroundColor = { 183, 28, 28, 160 } } }, true, {
           onSelected = function()
-            TriggerServerEvent("Vetement:SaveSkin")
+            TriggerServerEvent("Vetement:Buy")
                     RageUI.CloseAll()
                 end
             })
