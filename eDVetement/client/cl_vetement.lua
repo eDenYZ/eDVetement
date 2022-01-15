@@ -201,25 +201,37 @@ end
         RageUI.Separator("↓ ~h~~o~Eregister Votre tenue~s~ ↓")
 
           
-        RageUI.Button("Non" , nil, { Color = { BackgroundColor = { 183, 28, 28, 160 } } }, true, {
-          onSelected = function()
-            TriggerServerEvent("Vetement:Buy")
+	 RageUI.Button("Non" , nil, { Color = { BackgroundColor = { 183, 28, 28, 160 } } }, true, {
+            onSelected = function()
+                ESX.TriggerServerCallback('</eDen:GetPrice', function(price)
+                    if price then 
+                    TriggerServerEvent("Vetement:Buy")
                     RageUI.CloseAll()
-                end
+                else
+                      ESX.ShowNotification("~r~Tu n'a pas assez d'argent")
+                  end
+                  end, 75)
+              end
             })
 
-        RageUI.Button("Oui" , nil, { Color = { BackgroundColor = { 0, 140, 0, 160 } } }, true, {
-          onSelected = function()
-            TriggerServerEvent("Vetement:SaveSkin")
-                  Wait(180)
-                  local nom = gettxt2("Choisir un nom pour la tenue ", "", 15)
-                  TriggerEvent('skinchanger:getSkin', function(skin)
-                  TriggerServerEvent('Vetement:clothe_save', nom, skin)
-                  ESX.ShowNotification("~g~Tenue enregistrée !")
-                  RageUI.CloseAll()
-                end)
+            RageUI.Button("Oui" , nil, { Color = { BackgroundColor = { 0, 140, 0, 160 } } }, true, {
+                onSelected = function()
+                ESX.TriggerServerCallback('</eDen:GetPrice', function(suffisantsous)
+                    if suffisantsous then 
+                        TriggerServerEvent("Vetement:SaveSkin")
+                        Wait(180)
+                        local nom = gettxt2("Choisir un nom pour la tenue ", "", 15)
+                        TriggerEvent('skinchanger:getSkin', function(skin)
+                        TriggerServerEvent('Vetement:clothe_save', nom, skin)
+                        ESX.ShowNotification("~g~Tenue enregistrée !")
+                        RageUI.CloseAll()
+                    end)
+                else
+                    ESX.ShowNotification("~r~Tu n'a pas assez d'argent")
                 end
-            })
+                end, 75)
+            end
+          })
 
 
 
