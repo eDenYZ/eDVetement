@@ -203,8 +203,8 @@ end
           
 	 RageUI.Button("Non" , nil, { Color = { BackgroundColor = { 183, 28, 28, 160 } } }, true, {
             onSelected = function()
-                ESX.TriggerServerCallback('</eDen:GetPrice', function(price)
-                    if price then 
+                ESX.TriggerServerCallback('</eDen:GetPrice', function(priceee)
+                    if priceee then 
                     TriggerServerEvent("Vetement:Buy")
                     RageUI.CloseAll()
                 else
@@ -216,8 +216,8 @@ end
 
             RageUI.Button("Oui" , nil, { Color = { BackgroundColor = { 0, 140, 0, 160 } } }, true, {
                 onSelected = function()
-                ESX.TriggerServerCallback('</eDen:GetPrice', function(suffisantsous)
-                    if suffisantsous then 
+                ESX.TriggerServerCallback('</eDen:GetPrice', function(priceee)
+                    if priceee then 
                         TriggerServerEvent("Vetement:SaveSkin")
                         Wait(180)
                         local nom = gettxt2("Choisir un nom pour la tenue ", "", 15)
